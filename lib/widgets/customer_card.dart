@@ -91,7 +91,7 @@ class _CustomerCardState extends State<CustomerCard> {
                       ),
                       RichText(
                         text: TextSpan(
-                          text: widget.user.street!.toUpperCase(),
+                          text: widget.user.street!,
                           style: TextStyle(
                               fontSize: 13.sp,
                               color: const Color(0xff647A5F).withOpacity(.5),
@@ -99,7 +99,7 @@ class _CustomerCardState extends State<CustomerCard> {
                               fontFamily: "DM Sans"),
                           children: [
                             TextSpan(
-                              text: " ,${widget.user.streetTwo!.toUpperCase()}",
+                              text: " ,${widget.user.streetTwo!}",
                               style: TextStyle(
                                   fontSize: 13.sp,
                                   color:
@@ -108,7 +108,7 @@ class _CustomerCardState extends State<CustomerCard> {
                                   fontFamily: "DM Sans"),
                             ),
                             TextSpan(
-                              text: " ,${widget.user.state!.toUpperCase()}",
+                              text: " ,${widget.user.state!}",
                               style: TextStyle(
                                   fontSize: 13.sp,
                                   color:
