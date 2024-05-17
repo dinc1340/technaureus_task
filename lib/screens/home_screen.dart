@@ -190,73 +190,72 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
         backgroundColor: const Color.fromARGB(255, 202, 230, 202),
-        bottomNavigationBar: Container(height: 75.h,
-          decoration: BoxDecoration(borderRadius: BorderRadius.only(topLeft: Radius.circular(35.r),topRight: Radius.circular(35.r)),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.green.withOpacity(0.2),
-                spreadRadius: 2,
-                blurRadius: 20,
-                offset: const Offset(0, 10),
+        bottomNavigationBar: ClipRRect(
+          child: Container(
+            clipBehavior: Clip.hardEdge,
+            height: 75.h,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(35.r),
+                  topRight: Radius.circular(35.r)),
+              gradient: LinearGradient(
+                colors: [
+                  Colors.green.withOpacity(0.7),
+                  Colors.green.withOpacity(0.3),
+                ],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
               ),
-            ],
-            gradient: LinearGradient(
-              colors: [
-                Colors.green.withOpacity(0.7),
-                Colors.green.withOpacity(0.3),
-              ],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
             ),
-          ),
-          child: NavigationBar(
-            backgroundColor: Colors.transparent,
-            indicatorColor: Colors.transparent,
-            destinations: [
-              NavigationDestination(
-                enabled: true,
-                icon: Icon(
-                  Icons.home,
-                  size: 30.sp,
-                  color: Colors.white,
+            child: NavigationBar(
+              backgroundColor: Colors.transparent,
+              indicatorColor: Colors.transparent,
+              destinations: [
+                NavigationDestination(
+                  enabled: true,
+                  icon: Icon(
+                    Icons.home,
+                    size: 30.sp,
+                    color: Colors.white,
+                  ),
+                  label: "Home",
                 ),
-                label: "Home",
-              ),
-              NavigationDestination(
+                NavigationDestination(
+                    icon: GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const ProductScreen(),
+                            ));
+                      },
+                      child: Icon(
+                        Icons.inventory,
+                        size: 30.sp,
+                        color: const Color(0xff647A5F),
+                      ),
+                    ),
+                    label: "Product"),
+                NavigationDestination(
                   icon: GestureDetector(
                     onTap: () {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const ProductScreen(),
+                            builder: (context) => CustomerScreen(
+                                productProvider: productProvider),
                           ));
                     },
                     child: Icon(
-                      Icons.inventory,
+                      Icons.person_outline,
                       size: 30.sp,
                       color: const Color(0xff647A5F),
                     ),
                   ),
-                  label: "Product"),
-              NavigationDestination(
-                icon: GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) =>
-                              CustomerScreen(productProvider: productProvider),
-                        ));
-                  },
-                  child: Icon(
-                    Icons.person_outline,
-                    size: 30.sp,
-                    color: const Color(0xff647A5F),
-                  ),
+                  label: "Customer",
                 ),
-                label: "Customer",
-              ),
-            ],
+              ],
+            ),
           ),
         ),
         body: Padding(
